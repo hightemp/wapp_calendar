@@ -1,0 +1,104 @@
+body {
+    background: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+body.workday {
+    /* background: darkblue; */
+}
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+#time {
+}
+#hours {
+    gap: 5px;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    margin-bottom: 50px;
+    margin-top: 0px;
+}
+#hours > * {
+    width: 140px;
+    height: 50px;
+    border: 2px solid white;
+    color: rgba(255,255,255,0.5);
+    font-size: 42px;
+}
+#hours > .filled {
+    background: rgba(255,255,255,0.5);
+}
+#hours > .current {
+    background: red;
+}
+#year {
+    display: flex;
+    width: 1200px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+#year .row {
+    display: flex;
+    margin-top: 10px;
+}
+#year .half-year {
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#year .month {
+    display: flex;
+    width: 186px;
+    flex-wrap: wrap;
+    margin: 4px;
+    align-content: flex-start;
+}
+#year .title {
+    font-size: 16px;
+    flex: 1 100%;
+    width: 100%;
+}
+#year .day {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.1);
+    margin: 2px;
+    padding: 2px;
+    font-size: 10px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+}
+.empty {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.05);
+    margin: 2px;
+    padding: 2px;
+    font-size: 12px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+}
+#year .day-5,
+#year .day-6 {
+    background: darkred;
+}
+#year .current {
+    background: red !important;
+    font-weight: bold;
+}

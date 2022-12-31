@@ -1,0 +1,25 @@
+{% import "macros.html" as macros %}
+{% include "header.html" %}
+
+<meta http-equiv="refresh" content="20">
+
+{% if sPronounseTime %}
+<!-- <audio
+    src="{{sPronounseTime}}"
+    autoplay>
+    Ваш браузер не поддерживает элемент <code>audio</code>.
+</audio> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js"></script>
+<script>
+    var sound = new Howl({
+        src: ['{{sPronounseTime}}'],
+        volume: 1.0,
+        onend: function () {
+            // alert('Finished!');
+        }
+    });
+    sound.play()
+</script>
+{% endif %}
+
+{% include "b_footer.html" %}

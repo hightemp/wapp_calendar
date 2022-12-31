@@ -26,12 +26,12 @@ body, html {
 }
 
 .wrapper-scroller {
-    width: 4000px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 100vw 100vw 100vw;
 }
 
 .iframe {
     border: none;
-    width: 99vw;
-    height: 99vh;
+    width: 100vw;
+    height: 98vh;
 }

@@ -27,7 +27,9 @@ db = SqliteDatabase(DATABASE)
 # NOTE: Модели
 class Event(Model):
     name: CharField()
-    
+    class Meta:
+        database = db
+
 db.connect()
 
 if (bFirstStart):

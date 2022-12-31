@@ -208,7 +208,7 @@ def time_speaker():
     sH = now.strftime("%H")
     sM = now.strftime("%M")
     sS = now.strftime("%S")
-    if (sM>="00"):
+    if (sM=="00"):
         sP = f'./static/time/{sH}.mp3'
         if not os.path.isfile(sP):
             sSH = number_to_words(sH)

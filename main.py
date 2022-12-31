@@ -220,3 +220,9 @@ def time_speaker():
         'ptime.html', 
         sPronounseTime=sPronounseTime,
     )
+
+def run():
+    app.run(host='0.0.0.0')
+
+if __name__ == "__main__":
+    run()

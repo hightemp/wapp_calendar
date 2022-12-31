@@ -1,4 +1,4 @@
-from flask import g, Flask, render_template, request, send_file, redirect, session, jsonify
+from flask import g, Flask, request, send_file, redirect, session, jsonify
 import os
 import re
 from werkzeug.utils import secure_filename
@@ -117,6 +117,16 @@ def readfile(sFilePath):
             return f.read()
     return "ERROR"
 
+def load_template(name):
+    return readfile("templates/"+name).decode("utf-8")
+
+oTempFunctionLoader = FunctionLoader(load_template)
+
+def render_template(name, **kwargs):
+    data = load_template(name)
+    tpl = Environment(loader=oTempFunctionLoader).from_string(data)
+    return tpl.render(**kwargs)
+
 @app.route("/zip/static/<path:path>", methods=['GET', 'POST'])
 def zip_static(path):
     oR = Response(readfile("static/"+path), mimetype=mimetypes.guess_type(path)[0])
@@ -195,7 +205,7 @@ def generate_sounds():
     for sH in range(1, 24):
         if sH<10:
             sH = "0"+str(sH)
-        sP = f'./static/time/{sH}.mp3'
+        sP = f'/static/time/{sH}.mp3'
         sSH = number_to_words(sH)
         tts = gTTS(f"{sSH} час{conv(sH)}", lang="ru")
         tts.save(sP)
@@ -209,7 +219,7 @@ def time_speaker():
     sM = now.strftime("%M")
     sS = now.strftime("%S")
     if (sM=="00"):
-        sP = f'./static/time/{sH}.mp3'
+        sP = f'/static/time/{sH}.mp3'
         if not os.path.isfile(sP):
             sSH = number_to_words(sH)
             tts = gTTS(f"{sSH} часов", lang="ru")
